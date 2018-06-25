@@ -1,4 +1,7 @@
+import { CoinService } from './../../coin.service';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs-compat/_esm5/observable';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  coins: any;
+  constructor(private http: HttpClient, private service: CoinService) { }
 
   ngOnInit() {
+    this.getCoins();
+  }
+
+  getCoins() {
+    this.service.getCoins().subscribe(res => {
+      this.coins = res;
+    });
   }
 
 }
