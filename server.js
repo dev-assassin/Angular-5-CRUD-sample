@@ -1,4 +1,6 @@
-var express = require('express'),
+// server.js
+
+const express = require('express'),
     path = require('path'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
@@ -15,7 +17,7 @@ mongoose.connect(config.DB).then(
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-var port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 
 app.use('/coins', coinRoutes);
 
