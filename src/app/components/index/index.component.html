@@ -12,7 +12,7 @@
       <td>{{coin.name}}</td>
       <td>{{coin.price}}</td>
       <td><a [routerLink]="['/edit', coin._id]" class="btn btn-primary">Edit</a></td>
-      <td><a routerLink="" class="btn btn-danger">Delete</a></td>
+      <td><button (click)="deleteCoin(coin._id)" class="btn btn-danger">Delete</button>
     </tr>
   </tbody>
 </table>

@@ -35,4 +35,22 @@ export class CoinService {
       return res;
     });
   }
+
+  updateCoin(name, price, id) {
+    const uri = 'http://localhost:4000/coins/update/' + id;
+
+    const obj = {
+      name: name,
+      price: price
+    };
+    this.http.post(uri, obj).subscribe(res => console.log('Done'));
+  }
+
+  deleteCoin(id) {
+    const uri = 'http://locahost:4000/coins/delete/' + id;
+
+    return this.http.get(uri).map(res => {
+      return res;
+    });
+  }
 }
