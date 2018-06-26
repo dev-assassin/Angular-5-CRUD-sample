@@ -10,5 +10,7 @@ var Coin = new Schema({
         type: Number
     }
 }, {
-    collection: 'coins'
-});
+        collection: 'coins'
+    });
+
+module.exports = mongoose.model('Coin', Coin);

@@ -1,1 +1,3 @@
-export const DB = 'mongodb://localhost:27017/angularcrud';
+module.exports = {
+    DB: 'mongodb://localhost:27017/angularcrud'
+};

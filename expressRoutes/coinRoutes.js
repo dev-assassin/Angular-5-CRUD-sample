@@ -1,6 +1,6 @@
-import express from 'express';
-import { nextTick } from 'q';
-var app = express();
+// coinRoutes.js
+
+var express = require('express');
 var coinRoutes = express.Router();
 
 // Require Item model in our routes module
@@ -14,7 +14,7 @@ coinRoutes.route('/add').post(function (req, res) {
             res.status(200).json({ 'coin': 'Coin added successfully' });
         })
         .catch(err => {
-            res.status(400).send('unable to save to database');
+            res.status(400).send("unable to save to database");
         });
 });
 
@@ -38,12 +38,12 @@ coinRoutes.route('/edit/:id').get(function (req, res) {
     });
 });
 
-//Defined update route
+//  Defined update route
 coinRoutes.route('/update/:id').post(function (req, res) {
     Coin.findById(req.params.id, function (err, coin) {
-        if (!coin) {
+        if (!coin)
             return next(new Error('Could not load Document'));
-        } else {
+        else {
             coin.name = req.body.name;
             coin.price = req.body.price;
 
@@ -51,13 +51,13 @@ coinRoutes.route('/update/:id').post(function (req, res) {
                 res.json('Update complete');
             })
                 .catch(err => {
-                    res.status(400).send('unable to update the database');
+                    res.status(400).send("unable to update the database");
                 });
         }
     });
 });
 
-// Defined delete / remove / destroy route
+// Defined delete | remove | destroy route
 coinRoutes.route('/delete/:id').get(function (req, res) {
     Coin.findByIdAndRemove({ _id: req.params.id }, function (err, coin) {
         if (err) res.json(err);
